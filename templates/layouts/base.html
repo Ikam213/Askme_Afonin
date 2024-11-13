@@ -30,13 +30,13 @@
 
                 <div class="d-flex gap-1">
                     <a class="btn btn-primary" href={% url 'ask' %} style="align-content: center;" role="button">Ask question</a>
-                    <img src="../static/img/ava.jpg" alt="Avatar" style="height: 50px; width: 50px;" class="img-thumbnail">
+                    <img src="../static/img/ava.jpg" alt="Avatar" style="height: 60px; width: 60px; align-self:self-end;" class="img-thumbnail">
                     <div>
                         <div>
                             Dr. Pepper
                         </div>
-                        <a href={% url 'settings' %}>Settings</a>
-                        <a href="#">Log Out</a>
+                        <a class="btn btn-primary" href={% url 'settings' %} style="align-content: center;" role="button">Settings</a>
+                        <a class="btn btn-primary" href="#" style="align-content: center;" role="button">Log Out</a>
                     </div>
                 </div>
             </div>
