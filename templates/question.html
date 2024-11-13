@@ -1,0 +1,73 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="container mt-3">
+        <div class = "row m-3">
+            <div class="col-9">
+                <div class="card w-100" style="width: 18rem;">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-3">
+                                <div class="border mb-2" style="height: 100px">
+                                    <img src="jpg.jpg" alt="Avatar" class="img-fluid">
+                                </div>
+                                <input class="form-control" type="number" value="5" placeholder="Default input"
+                                    aria-label="default input example">
+                            </div>
+                            <div class="col-9">
+                                <h5 class="card-title">{{ question.title }}</h5>
+                                <p class="card-text">Blaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-blaaaaaaaaaaaaaaaaaaaaaaaaaaa-blaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, i have a problem, help me!</p>
+                                <div class="d-flex gap-5">
+                                        Tags:
+                                        <a href="#" class="card-link">Another link</a>
+                                        <a href="#" class="card-link">Another link</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                <hr class="bg-black border-2 border-top border-black"/>
+
+                {% for answer in answers %}
+                <div class="card w-100 mb-3" style="width: 18rem;">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-3">
+                                <div class="border mb-2" style="height: 100px">
+                                    <img src="jpg.jpg" alt="Avatar" class="img-fluid">
+                                </div>
+                                <input class="form-control" type="number" value="5" placeholder="Default input"
+                                    aria-label="default input example">
+
+                            </div>
+                            <div class="col-9">
+                                <p class="card-text">{{answer.text}}</p>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                    Upvote!
+                                    </label>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div> 
+                {% endfor %}
+
+                <div class="mb-3">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Enter your answer" style="min-height: 8rem;"></textarea>
+                </div>
+
+                <div class="row">
+                    <div class="col-9">
+                        <button type="button" class="btn btn-primary btn-lg">Answer!</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+{% endblock content %}

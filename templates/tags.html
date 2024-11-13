@@ -1,0 +1,22 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block content %}
+            
+    <div class="col-9">
+        <div class="d-flex flex-column gap-3">
+
+            <div class="d-flex gap-3 align-items-center">
+                <h1>Tag: Primary </h1>
+                <a href={% url 'index' %}>New Questions</a>
+            </div>  
+
+            {% for question in questions %}
+                {% include 'layouts/one_question.html' %}
+            {% endfor %}
+
+            {% include 'layouts/pagination.html' %}
+            
+        </div>
+    </div>
+                   
+{% endblock content %}

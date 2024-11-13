@@ -1,0 +1,49 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class = "row">
+
+    <div class="col-6">
+
+        <div class="d-flex gap-3 align-items-center mb-3">
+            <h1>Log In</h1>
+        </div>
+        <form>
+        <div class = "wrong-password w-75" style="display: none;">
+            <div class="alert alert-danger" role="alert">
+                Sorry, wrong password, try again!
+                </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Your email adress">
+        </div>
+
+        <label for="inputPassword5" class="form-label">Password</label>
+        <input type="password" id="inputPassword5" class="form-control" maxlength="20" aria-describedby="passwordHelpBlock">
+        <div id="passwordHelpBlock" class="form-text mb-4">
+        Your password must be 8-20 characters long, contain letters and numbers.
+        </div>
+
+        <div class="row">
+            <div class = "col-5">
+                <button type="submit" class="btn btn-primary">Log in</button>
+            </div>
+
+            <div class = "col-6 d-flex justify-content-end" style = "margin-top: auto;">
+                <a class="icon-link" href={% url 'signup' %}>
+                    Create new account
+                    <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
+                    </a>
+            </div>
+            
+        </div>
+        </form>
+
+    </div>
+</div>
+    
+
+{% endblock content %}

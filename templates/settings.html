@@ -1,0 +1,45 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="d-flex flex-column gap-3">
+
+    <div class="d-flex gap-3 align-items-center">
+        <h1>Settings: Dr. Pepper</h1>
+    </div>
+    
+    <div class="col-9">
+
+        <form class="w-75">
+            <div class="mb-3">
+                <label for="exampleInputLogin" class="form-label">Login</label>
+                <input type="login" class="form-control" id="login" placeholder="dr_pepper">
+            </div>
+    
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" placeholder="DrPepper@mail.ru">
+            </div>
+    
+            <div class="mb-3">
+                <label for="exampleInputNickname" class="form-label">Nickname</label>
+                <input type="nickname" class="form-control" maxlength="20" id="nickname" placeholder="Dr. Pepper">
+            </div>
+
+            <div class="border mb-2" style="height: 100px; width: 100px;">
+                <img src="avatar.jpg" alt="Avatar" class="img-fluid">
+            </div>
+    
+            <div class="input-group mb-4">
+                <label class="input-group-text" for="inputGroupFile01">Upload your avatar</label>
+                <input type="file" class="form-control" id="inputGroupFile01">
+                </div>
+    
+            <button type="submit" class="btn btn-primary">Save changes!</button>
+        </form>
+    
+    </div>
+
+</div>
+
+{% endblock content %}

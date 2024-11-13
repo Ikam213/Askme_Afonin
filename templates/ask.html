@@ -1,0 +1,42 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="container mt-3">
+        <div class="d-flex gap-3 align-items-center m-3">
+            <h1>New Question</h1>
+        </div>
+
+        <div class = "row">
+            <div class="col-9">
+                <div class="row mb-3 w-100" style="margin-left: 5px;">
+                    <label for="colFormLabelLg" class="col-2 col-form-label col-form-label-lg">Title</label>
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control form-control" id="colFormLabelSm" placeholder="Your title" maxlength="50" style="height: 50px; font-weight: 350;">
+                    </div>
+                </div>
+                <div class="row mb-3 w-100" style="margin-left: 5px;">
+                    <label for="colFormLabelLg" class="col-sm-2 col-form-label-lg">Text</label>
+                    <div class="col-sm-10">
+                        <div class="form-floating">
+                            <textarea class="form-control" id="floatingTextarea" maxlength="1000" style="min-height: 300px;"></textarea>
+                            <label for="floatingTextarea" style= "font-weight: 350;">Your question</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3 w-100" style="margin-left: 5px;">
+                    <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Tags</label>
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control" id="colFormLabelLg" placeholder="Your tags" maxlength = "30" style="height: 50px; font-weight: 350">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-2" style="margin-left: 132px;">
+                    <button type="button" class="btn btn-primary btn-lg">Ask!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
