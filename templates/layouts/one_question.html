@@ -13,15 +13,16 @@
             </div>
             <div class="col-9">
 
-                <a href={% url 'question' question.id %} class="card-title" style = "font-size: x-large;">{{ question.title }}</a>
+                <p class="card-title" style = "font-size: x-large;">{{ question.title }}</a>
                 <p class="card-text">{{ question.text }}</p>
 
-                <div class="d-flex gap-5">
-                    <a href="#" class="card-link">Answer (3)</a>
-                    <div>
-
+                <div class = "row pt-4">
+                    <div class = "col-2">
+                        <a class="btn btn-primary" href={% url 'question' question.id %} style="align-content: center;" role="button">Answer</a>
+                    </div>
+                    <div class = "col-10" style = "align-content: center;">
                         Tags:
-
+                        
                         <a href={% url 'tags' %} class="card-link">Primary</a>
                         <a href="#" class="card-link">Another link</a>
                         <a href="#" class="card-link">Another link</a>

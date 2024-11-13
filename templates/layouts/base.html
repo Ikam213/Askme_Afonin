@@ -1,5 +1,4 @@
 {% load static %}
-
 <!doctype html>
 <html lang="en">
 
@@ -12,7 +11,7 @@
 
 <body>
 
-<div class = "logged-out">
+<div class = "logged-in" id="logged-in" style="display: block;">
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
             <div class="d-flex w-100 justify-content-between align-items-center">
@@ -26,7 +25,40 @@
 
                 <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Ask</button>
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+
+                <div class="d-flex gap-1">
+                    <a class="btn btn-primary" href={% url 'ask' %} style="align-content: center;" role="button">Ask question</a>
+                    <img src="../static/img/ava.jpg" alt="Avatar" style="height: 50px; width: 50px;" class="img-thumbnail">
+                    <div>
+                        <div>
+                            Dr. Pepper
+                        </div>
+                        <a href={% url 'settings' %}>Settings</a>
+                        <a href="#">Log Out</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<div class = "logged-out" id= "logged-out" style="display: block;">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <div class="d-flex w-100 justify-content-between align-items-center">
+                <a class="navbar-brand" href={% url 'index' %}>AskAfonin</a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
 
                 <div class="d-flex gap-1">
@@ -40,38 +72,7 @@
     </nav>
 </div>
 
-<div class = "logged-in">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <div class="d-flex w-100 justify-content-between align-items-center">
-                <a class="navbar-brand" href={% url 'index' %}>AskAfonin</a>
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Ask</button>
-                </form>
-
-                <div class="d-flex gap-1">
-                    <img src="asda.jpg" alt="Avatar" class="img-thumbnail">
-                    <div>
-                        <div>
-                            Dr. Pepper
-                        </div>
-                        <a href={% url 'settings' %}>Settings</a>
-                        <a href="#">Log Out</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
-</div>
-    
     <main class = "container mt-3">
 
         <div class = "row">
@@ -111,9 +112,10 @@
             </div>
 
         </div>
+
     </main>
 
-    <script type = "text/javascript" src={% static 'js/bootstrap.min.js' %}></script>
+    <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
 
 </body>
 

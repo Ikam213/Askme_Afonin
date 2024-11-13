@@ -57,7 +57,7 @@ def ask(request):
     return render(request, 'ask.html')
 
 def question(request, question_id):
-    one_question = QUESTIONS[question_id - 1]
+    one_question = QUESTIONS[question_id]
     return render(request, 'question.html', context={'answers': ANSWERS, 'question': one_question})
 
 def settings(request):
