@@ -10,68 +10,68 @@
 </head>
 
 <body>
+{% if request.user.is_authenticated %}
+    <div class = "logged-in" id="logged-in" style="display: block;">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <div class="d-flex w-100 justify-content-between align-items-center">
+                    <a class="navbar-brand" href="{% url 'index' %}">AskAfonin</a>
 
-<div class = "logged-in" id="logged-in" style="display: block;">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <div class="d-flex w-100 justify-content-between align-items-center">
-                <a class="navbar-brand" href={% url 'index' %}>AskAfonin</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Введи свой вопрос" aria-label="Введи свой вопрос">
+                        <button class="btn btn-outline-success" type="submit">Найти</button>
+                    </form>
 
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-
-                <div class="d-flex gap-1">
-                    <a class="btn btn-primary" href={% url 'ask' %} style="align-content: center;" role="button">Ask question</a>
-                    <img src="../static/img/ava.jpg" alt="Avatar" style="height: 60px; width: 60px; align-self:self-end;" class="img-thumbnail">
-                    <div>
+                    <div class="d-flex gap-1">
+                        <a class="btn btn-primary" href="{% url 'ask' %}" style="align-content: center;" role="button">Задать вопрос</a>
+                        <img src="/static/img/ava.jpg" alt="Avatar" style="height: 60px; width: 60px; align-self:self-end;" class="img-thumbnail">
                         <div>
-                            Dr. Pepper
+                            <div>
+                                {{ request.user.username }}
+                            </div>
+                            <a class="btn btn-primary" href="{% url 'settings' %}" style="align-content: center;" role="button">Настройки</a>
+                            <a class="btn btn-primary" href="{% url 'logout' %}" style="align-content: center;" role="button">Выйти</a>
                         </div>
-                        <a class="btn btn-primary" href={% url 'settings' %} style="align-content: center;" role="button">Settings</a>
-                        <a class="btn btn-primary" href="#" style="align-content: center;" role="button">Log Out</a>
                     </div>
                 </div>
             </div>
-        </div>
-    </nav>
-</div>
+        </nav>
+    </div>
+{% else %}
+    <div class = "logged-out" id= "logged-out" style="display: block;">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <div class="d-flex w-100 justify-content-between align-items-center">
+                    <a class="navbar-brand" href="{% url 'index' %}">AskAfonin</a>
 
-<div class = "logged-out" id= "logged-out" style="display: block;">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <div class="d-flex w-100 justify-content-between align-items-center">
-                <a class="navbar-brand" href={% url 'index' %}>AskAfonin</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Введи свой вопрос" aria-label="Введи свой вопрос">
+                        <button class="btn btn-outline-success" type="submit">Найти</button>
+                    </form>
 
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-
-                <div class="d-flex gap-1">
-                    <div>
-                        <a href={% url 'login' %}>Log In</a>
-                        <a href={% url 'signup' %}>Register</a>
+                    <div class="d-flex gap-1">
+                        <div>
+                            <a href="{% url 'login' %}">Войти</a>
+                            <a href="{% url 'signup' %}">Зарегистрироваться</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </nav>
-</div>
-
+        </nav>
+    </div>
+{% endif %}
 
     <main class = "container mt-3">
 
@@ -82,40 +82,30 @@
             </div>
             
             <div class="col-2">
-                <section class="mb-3">
-                    <h2>Popular Tags</h2>
-                    <div>
-                        <span class="badge text-bg-primary">Primary</span>
-                        <span class="badge text-bg-secondary">Secondary</span>
-                        <span class="badge text-bg-success">Success</span>
-                        <span class="badge text-bg-danger">Danger</span>
-                        <span class="badge text-bg-warning">Warning</span>
-                        <span class="badge text-bg-info">Info</span>
-                        <span class="badge text-bg-light">Light</span>
-                        <span class="badge text-bg-dark">Dark</span>
-                    </div>
-                </section>
-
-                <section>
-                    <h2>Best members</h2>
-                    <div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item"><a href="#">Member</a></li>
-                            <li class="list-group-item"><a href="#">Member</a></li>
-                            <li class="list-group-item"><a href="#">Member</a></li>
-                            <li class="list-group-item"><a href="#">Member</a></li>
-                            <li class="list-group-item"><a href="#">Member</a></li>
-                        </ul>
-                    </div>
-                </section>
+                <h5 class="text-center">Популярные тэги</h5>
+                <ul class="list-group overflow-auto" style="height: 350px;">
+                    {% for tag in all_tags %}
+                    <li class="list-group-item">
+                        <a href="{% url 'tags' tag.tag_title %}">
+                            {{ tag.tag_title }}
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+                <h5 class="text-center">Топ участников</h5>
+                <ul class="list-group overflow-auto" style="height: 200px;">
+                    {% for member in top_members %}
+                    <a href="#">
+                        <li class="list-group-item">{{ member.username }}</li>
+                    </a>
+                    {% endfor %}
+                </ul>
 
             </div>
 
         </div>
 
     </main>
-
-    <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
 
 </body>
 

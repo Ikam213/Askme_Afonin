@@ -1,6 +1,7 @@
 {% extends 'layouts/base.html' %}
 {% load static %}
 {% block content %}
+{% load bootstrap5 %}
 
     <div class="container mt-3">
         <div class = "row m-3">
@@ -9,44 +10,40 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-3">
-                                <div class="border mb-2" style="height: 100px">
-                                    <img src="jpg.jpg" alt="Avatar" class="img-fluid">
+                                <div class="mb-2 mx-lg-3" style="height: 100px">
+                                    <img src="/static/img/ava2.jpg" alt="Avatar" class="img-fluid" style = "height: 100px;">
                                 </div>
                                 <input class="form-control" type="number" value="5" placeholder="Default input"
                                     aria-label="default input example">
                             </div>
                             <div class="col-9">
                                 <h5 class="card-title">{{ question.title }}</h5>
-                                <p class="card-text">Blaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-blaaaaaaaaaaaaaaaaaaaaaaaaaaa-blaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, i have a problem, help me!</p>
-                                <div class="d-flex gap-5">
-                                        Tags:
-                                        <a href="#" class="card-link">Another link</a>
-                                        <a href="#" class="card-link">Another link</a>
-                                </div>
+                                <p class="card-text">{{ question.body }}</p>
                             </div>
                         </div>
                     </div>
                 </div> 
                 <hr class="bg-black border-2 border-top border-black"/>
 
+                {% with answers=page.object_list.all %}
                 {% for answer in answers %}
                 <div class="card w-100 mb-3" style="width: 18rem;">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-3">
-                                <div class="border mb-2" style="height: 100px">
-                                    <img src="jpg.jpg" alt="Avatar" class="img-fluid">
+                                <div class="mb-2 mx-lg-3" style="height: 100px">
+                                    <img src="/static/img/ava2.jpg" alt="Avatar" class="img-fluid" style = "height: 100px">
                                 </div>
                                 <input class="form-control" type="number" value="5" placeholder="Default input"
                                     aria-label="default input example">
 
                             </div>
                             <div class="col-9">
-                                <p class="card-text">{{answer.text}}</p>
+                                <p class="card-text">{{answer.body}}</p>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                                     <label class="form-check-label" for="flexCheckDefault">
-                                    Upvote!
+                                    Поддержать!
                                     </label>
                                 </div>
                             </div>
@@ -55,19 +52,31 @@
                     </div>
                 </div> 
                 {% endfor %}
-
-                <div class="mb-3">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Enter your answer" style="min-height: 8rem;"></textarea>
-                </div>
-
+                {% endwith %}
+                {% include 'layouts/pagination.html' %}
+                
+                {% if request.user.is_authenticated %}
+                <form action="{% url 'question' question.id %}" method="POST">
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                    
+                    {% buttons %}
+                    <div class="row">
+                        <div class="col-9">
+                            <button type="submit" class="btn btn-primary">Ответить!</button>
+                        </div>
+                    </div>
+                    {% endbuttons %}
+                </form>
+                {% else %}
                 <div class="row">
                     <div class="col-9">
-                        <button type="button" class="btn btn-primary btn-lg">Answer!</button>
+                        <a class="btn btn-primary" href="{% url 'login' %}" style="align-content: center;" role="button">Войдите, чтобы ответить</a>
                     </div>
                 </div>
-
+                {% endif %}
             </div>
         </div>
     </div>
-    
+
 {% endblock content %}

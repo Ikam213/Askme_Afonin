@@ -1,51 +1,26 @@
 {% extends 'layouts/base.html' %}
 {% load static %}
 {% block content %}
+{% load bootstrap5 %}
 
 <div class="col-9">
 
     <div class="d-flex gap-3 align-items-center mb-3">
-        <h1>Registration</h1>
+        <h1>Регистрация</h1>
     </div>
 
-    <div class = "email-taken" style="display: none;">
-        <div class="alert alert-danger" role="alert">
-            Sorry, email is already taken, try again!
-            </div>
-    </div>
+    <form action="{% url 'signup' %}" method="POST">
+        {% csrf_token %}
+        {% bootstrap_form form %}
 
-    <form class="w-75">
-        <div class="mb-3">
-            <label for="exampleInputLogin" class="form-label">Login</label>
-            <input type="login" class="form-control" id="login">
-        </div>
-
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="email">
-        </div>
-
-        <div class="mb-3">
-            <label for="exampleInputNickname" class="form-label">Nickname</label>
-            <input type="nickname" class="form-control" maxlength="20" id="nickname">
-        </div>
-
-        <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" class="form-control" maxlength="20" id="password">
-        </div>
-
-        <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Repeat password</label>
-            <input type="password" class="form-control" maxlength="20" id="password_2">
-        </div>
-
+        {% buttons %}
         <div class="input-group mb-4">
-            <label class="input-group-text" for="inputGroupFile01">Upload your avatar</label>
-            <input type="file" class="form-control" id="inputGroupFile01">
+            <label class="input-group-text" for="inputGroupFile01">Загрузите свой аватар</label>
+            <input type="file" class="form-control" name="avatar" id="inputGroupFile01">
             </div>
 
-        <button type="submit" class="btn btn-primary">Sign Up!</button>
+        <button type="submit" class="btn btn-primary">Зарегистрироваться!</button>
+        {% endbuttons %}
     </form>
 
 </div>

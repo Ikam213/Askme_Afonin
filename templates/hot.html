@@ -5,14 +5,16 @@
 <div class="d-flex flex-column gap-3">
 
     <div class="d-flex gap-3 align-items-center">
-        <h1>Hot Questions</h1>
-        <a class="btn btn-primary" href={% url 'index' %} style="align-content: center;" role="button">New Questions</a>
+        <h1>Популярные вопросы</h1>
+        <a class="btn btn-primary" href="{% url 'index' %}" style="align-content: center;" role="button">Последние вопросы</a>
     </div>
 
     <div class = "col-9">
+        {% with questions=page.object_list.all %}
         {% for question in questions %}
             {% include 'layouts/one_question.html' %}
         {% endfor %}
+        {% endwith %}
 
         {% include 'layouts/pagination.html' %}
         

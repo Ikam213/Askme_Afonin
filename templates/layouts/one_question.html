@@ -4,7 +4,7 @@
     <div class="card-body">
         <div class="row">
             <div class="col-3">
-                <div class="mb-2" style="margin-left: 40px; height: 100px ; width: 100px; align-content: center;">
+                <div class="mb-2" style="margin-left: 25px; height: 100px ; width: 100px; align-content: center;">
                     <img src="/static/img/question.jpg" style = "height : 100px; width: 100px;" alt="Avatar" class="img-fluid">
                 </div>
                 <input class="form-control" type="number" value="5" placeholder="Default input"
@@ -16,17 +16,18 @@
                 <p class="card-title" style = "font-size: x-large;">{{ question.title }}</a>
                 <p class="card-text">{{ question.text }}</p>
 
-                <div class = "row pt-4">
-                    <div class = "col-2">
-                        <a class="btn btn-primary" href={% url 'question' question.id %} style="align-content: center;" role="button">Answer</a>
+                <div class = "row pt-4 mt-5">
+                    <div class = "col-3">
+                        <a class="btn btn-primary" href="{% url 'question' question.id %}" style="align-content: center;" role="button">Ответить</a>
                     </div>
-                    <div class = "col-10" style = "align-content: center;">
-                        Tags:
+                    <div class = "col-9" style = "align-content: center;">
+                        Тэги:
                         
-                        <a href={% url 'tags' %} class="card-link">Primary</a>
-                        <a href="#" class="card-link">Another link</a>
-                        <a href="#" class="card-link">Another link</a>
-                        <a href="#" class="card-link">Another link</a>
+                        {% for question_tag in question.tags.all %}
+                        <li class="list-inline-item">
+                        <a href="{% url 'tags' question_tag%}">{{ question_tag }}</a>
+                        </li>
+                        {% endfor %}
                     </div>
                 </div>
             </div>

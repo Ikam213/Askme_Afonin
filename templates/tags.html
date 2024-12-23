@@ -6,16 +6,16 @@
         <div class="d-flex flex-column gap-3">
 
             <div class="d-flex gap-3 align-items-center">
-                <h1>Tag: Primary </h1>
-                <a class="btn btn-primary" href={% url 'index' %} style="align-content: center;" role="button">New Quesions</a>
+                <h1>Вопросы по тэгу: {{ current_tag.tag_title }} </h1>
+                <a class="mt-1 btn btn-primary" href="{% url 'index' %}" style="align-content: center;" role="button">Последние вопросы</a>
             </div>  
-
+            {% with questions=page.object_list.all %}
             {% for question in questions %}
                 {% include 'layouts/one_question.html' %}
             {% endfor %}
 
             {% include 'layouts/pagination.html' %}
-            
+            {% endwith %}
         </div>
     </div>
                    
