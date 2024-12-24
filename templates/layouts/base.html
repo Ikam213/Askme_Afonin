@@ -63,8 +63,8 @@
 
                     <div class="d-flex gap-1">
                         <div>
-                            <a href="{% url 'login' %}">Войти</a>
-                            <a href="{% url 'signup' %}">Зарегистрироваться</a>
+                            <a href="{% url 'login' %}?next={{ request.path }}">Войти</a>
+                            <a href="{% url 'signup' %}?next={{ request.path }}">Зарегистрироваться</a>
                         </div>
                     </div>
                 </div>
@@ -83,7 +83,7 @@
             
             <div class="col-2">
                 <h5 class="text-center">Популярные тэги</h5>
-                <ul class="list-group overflow-auto" style="height: 350px;">
+                <ul class="list-group overflow-auto" style="height: 220px;">
                     {% for tag in all_tags %}
                     <li class="list-group-item">
                         <a href="{% url 'tags' tag.tag_title %}">
@@ -93,10 +93,10 @@
                     {% endfor %}
                 </ul>
                 <h5 class="text-center">Топ участников</h5>
-                <ul class="list-group overflow-auto" style="height: 200px;">
+                <ul class="list-group overflow-auto" style="height: 220px;">
                     {% for member in top_members %}
                     <a href="#">
-                        <li class="list-group-item">{{ member.username }}</li>
+                        <li class="list-group-item">{{ member.user }}</li>
                     </a>
                     {% endfor %}
                 </ul>

@@ -1,42 +1,25 @@
 {% extends 'layouts/base.html' %}
 {% load static %}
 {% block content %}
+{% load bootstrap5 %}
 
     <div class="container mt-3">
         <div class="d-flex gap-3 align-items-center m-3">
             <h1>Новый вопрос</h1>
         </div>
 
-        <div class = "row">
-            <div class="col-9">
-                <div class="row mb-3 w-100" style="margin-left: 5px;">
-                    <label for="colFormLabelLg" class="col-2 col-form-label col-form-label-lg">Тема</label>
-                    <div class="col-sm-10">
-                    <input type="text" class="form-control form-control" id="colFormLabelSm" placeholder="Тема вашего вопроса" maxlength="50" style="height: 50px; font-weight: 350;">
-                    </div>
-                </div>
-                <div class="row mb-3 w-100" style="margin-left: 5px;">
-                    <label for="colFormLabelLg" class="col-sm-2 col-form-label-lg">Вопрос</label>
-                    <div class="col-sm-10">
-                        <div class="form-floating">
-                            <textarea class="form-control" id="floatingTextarea" maxlength="1000" style="min-height: 300px;"></textarea>
-                            <label for="floatingTextarea" style= "font-weight: 350;">Здесь напишите ваш вопрос</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mb-3 w-100" style="margin-left: 5px;">
-                    <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Тэги</label>
-                    <div class="col-sm-10">
-                    <input type="text" class="form-control" id="colFormLabelLg" placeholder="Укажите тэги" maxlength = "30" style="height: 50px; font-weight: 350">
-                    </div>
-                </div>
-            </div>
+        <form action="{% url 'ask' %}" method="POST">
+            <input type="hidden" name="next" value="{{ next }}">
+            {% csrf_token %}
+            {% bootstrap_form form %}
 
-            <div class="row">
-                <div class="col-2" style="margin-left: 128px;">
-                    <button type="button" class="btn btn-primary btn-lg">Спросить!</button>
+            {% buttons %}
+                <div class="row">
+                    <div class="col-2">
+                        <button type="sumbit" class="btn btn-primary btn-lg">Спросить!</button>
+                    </div>
                 </div>
-            </div>
-        </div>
+            {% endbuttons %}
+        </form>
     </div>
 {% endblock content %}

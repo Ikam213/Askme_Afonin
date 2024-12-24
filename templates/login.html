@@ -11,6 +11,7 @@
             <h1>Логин</h1>
         </div>
         <form action="{% url 'login' %}" method="POST">
+            <input type="hidden" name="next" value="{{ next }}">
             {% csrf_token %}
             {% bootstrap_form form %}
 
@@ -22,6 +23,7 @@
 
                 <div class = "col-6 d-flex justify-content-end" style = "margin-top: auto;">
                     <a class="icon-link" href="{% url 'signup' %}">
+                        <input type="hidden" name="next" value="{{ next }}">
                         Создать новый аккаунт
                         <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
                         </a>
